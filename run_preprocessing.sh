@@ -1,0 +1,32 @@
+# Copyright (c) 2019, NVIDIA CORPORATION. All rights reserved.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+DATASET_DIR=/workspace/data-bin/wmt14_en_de_joined_dict
+TEXT=examples/translation/wmt14_en_de
+
+(
+  cd examples/translation
+  bash prepare-wmt14en2de.sh
+)
+
+python preprocess.py \
+  --source-lang en \
+  --target-lang de \
+  --trainpref $TEXT/train \
+  --validpref $TEXT/valid \
+  --testpref $TEXT/test \
+  --destdir ${DATASET_DIR} \
+  --joined-dictionary
+
+cp $TEXT/code $DATASET_DIR/code
+sacrebleu -t wmt14/full -l de-en --echo src > $DATASET_DIR/sacrebleu_reference.de
