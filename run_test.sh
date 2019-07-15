@@ -1,7 +1,7 @@
 #!/bin/bash
 rm /workspace/checkpoints/checkpoint_1_0.pt
 # rm -r /workspace/results
-mkdir /workspace/results
+mkdir -p /workspace/results
 for file in $(ls /workspace/checkpoints);
 do
 #    if [[ $file = *.pt ]]; then 
