@@ -1,5 +1,5 @@
 #!/bin/bash
-rm /workspace/checkpoints/checkpoint_1_0.pt
+rm -f /workspace/checkpoints/checkpoint_1_0.pt
 rm -f -r /workspace/results
 mkdir -p /workspace/results
 for file in $(ls /workspace/checkpoints);
