@@ -1,7 +1,7 @@
 #! /bin/bash
 nvidia-smi
 
-# rm -r /workspace/checkpoints
+rm -f -r /workspace/checkpoints # delete checkpoint files stored last time, if you want to start from the last checkpoint comment this line
 mkdir -p /workspace/checkpoints
 
 nohup python -m torch.distributed.launch --nproc_per_node 8 /workspace/translation/train.py /workspace/data-bin/wmt14_en_de_joined_dict \
