@@ -1,6 +1,7 @@
 #! /bin/bash
 nvidia-smi
 
+# rm -r /workspace/checkpoints
 mkdir -p /workspace/checkpoints
 
 nohup python -m torch.distributed.launch --nproc_per_node 8 /workspace/translation/train.py /workspace/data-bin/wmt14_en_de_joined_dict \
