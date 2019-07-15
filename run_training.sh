@@ -1,3 +1,8 @@
+#! /bin/bash
+nvidia-smi
+
+mkdir -p /workspace/checkpoints
+
 nohup python -m torch.distributed.launch --nproc_per_node 8 /workspace/translation/train.py /workspace/data-bin/wmt14_en_de_joined_dict \
   --arch transformer_wmt_en_de_big_t2t \
   --share-all-embeddings \
@@ -21,5 +26,5 @@ nohup python -m torch.distributed.launch --nproc_per_node 8 /workspace/translati
   --save-interval-updates 1000 \
   --ignore-case \
   --fp16 \
-  --save-dir /media/data/nmt3/checkpoints \
+  --save-dir /workspace/checkpoints \
   --distributed-init-method env:// > train.nohup.out &
