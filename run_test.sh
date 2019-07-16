@@ -4,7 +4,7 @@ rm -f -r /workspace/results
 mkdir -p /workspace/results
 for file in $(ls /workspace/checkpoints);
 do
-#    if [[ $file = *.pt ]]; then 
+#    if [[$file=*.pt]]; then 
     echo "Test The Checkpoint: $file"
     python generate.py /workspace/data-bin/wmt14_en_de_joined_dict \
       --path /workspace/checkpoints/$file \
