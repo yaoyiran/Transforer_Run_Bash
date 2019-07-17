@@ -24,6 +24,7 @@ nohup python -m torch.distributed.launch --nproc_per_node 8 /workspace/translati
   --seed 3 \
   --online-eval \
   --max-epoch 150 \
+  --update-freq 1 \
   --save-interval-updates 1000 \
   --ignore-case \
   --fp16 \
