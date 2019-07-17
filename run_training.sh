@@ -23,7 +23,6 @@ nohup python -m torch.distributed.launch --nproc_per_node 8 /workspace/translati
   --max-tokens 5120 \
   --seed 3 \
   --online-eval \
-  --valid-subset valid,test \
   --max-epoch 150 \
   --update-freq 1 \
   --save-interval-updates 1000 \
